@@ -26,7 +26,7 @@ function operate (firstNumber, operator, secondNumber){
         return substractMe(firstNumber, secondNumber)
     }
     else if (operator === '/'){
-        return divideMeMe(firstNumber, secondNumber)
+        return divideMe(firstNumber, secondNumber)
     }
     else if (operator === '*' || operator === 'x'){
         return multiplyMe(firstNumber, secondNumber)
