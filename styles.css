@@ -42,10 +42,18 @@ body{
 #numberpad{
     display: flex;
     flex-wrap: wrap;
-    width: 50%;
+    width: 60%;
 }
 .numberbtn{
     flex: 1;
     background-color: skyblue;
     
+}
+#operators{
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+}
+.operatorbtn{
+    flex: 1;
 }
