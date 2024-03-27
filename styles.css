@@ -6,6 +6,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 300px;
 
 }
 #frame{
@@ -39,7 +40,7 @@ body{
     width: 100%;
 }
 
-.keys{
-    display: flex;
+.numberpad{
+    background-color: skyblue;
     
 }

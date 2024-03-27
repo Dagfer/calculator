@@ -33,10 +33,10 @@ function operate (firstNumber, operator, secondNumber){
     }
 }
 const keypad = document.querySelector('#keypad');
-for (let i = 0; i < 16; i++){
-    const keys = document.createElement('button');
-    keys.classList.add('keys')
-    keys.style.width = "calc(100%/4)";
-    keys.style.height = "calc(100%/4)";
-    keypad.appendChild(keys);    
-}
+// for (let i = 0; i < 16; i++){
+//     const keys = document.createElement('button');
+//     keys.classList.add('keys')
+//     keys.style.width = "calc(100%/4)";
+//     keys.style.height = "calc(100%/4)";
+//     keypad.appendChild(keys);    
+// }
