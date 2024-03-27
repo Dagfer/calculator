@@ -32,3 +32,5 @@ function operate (firstNumber, operator, secondNumber){
         return multiplyMe(firstNumber, secondNumber)
     }
 }
+const keypad = document.querySelector('#keypad');
+const keys = document.createElement('button');
