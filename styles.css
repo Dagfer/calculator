@@ -39,8 +39,13 @@ body{
     padding: 5px;
     width: 100%;
 }
-
-.numberpad{
+#numberpad{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+}
+.numberbtn{
+    flex: 1;
     background-color: skyblue;
     
 }
