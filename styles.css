@@ -27,6 +27,8 @@ body{
 }
 
 #display{
+  display: flex;
+  flex-wrap: wrap;
     width: 100%;
     height: 25%;
     padding: 5px;

@@ -32,7 +32,18 @@ function operate (firstNumber, operator, secondNumber){
         return multiplyMe(firstNumber, secondNumber)
     }
 }
-const keypad = document.querySelector('#keypad');
+const displayField = document.querySelector('#display');
+
+function logNumber(e){
+ displayField.textContent += e.target.textContent;
+}
+const buttons = Array.from(document.querySelectorAll('.numberbtn'));
+const btnNumbers = buttons.map(button => button.textContent);
+buttons.forEach((button) => {
+    button.addEventListener('click', logNumber);
+    });
+      
+
 // for (let i = 0; i < 16; i++){
 //     const keys = document.createElement('button');
 //     keys.classList.add('keys')
