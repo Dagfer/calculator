@@ -35,14 +35,19 @@ function operate (firstNumber, operator, secondNumber){
 const displayField = document.querySelector('#display');
 
 function logNumber(e){
- displayField.textContent += e.target.textContent;
+ displayField.textContent += parseInt(e.target.textContent);
+}
+
+function clearDisplay (){
+    displayField.textContent = '';
 }
 const buttons = Array.from(document.querySelectorAll('.numberbtn'));
 const btnNumbers = buttons.map(button => button.textContent);
 buttons.forEach((button) => {
     button.addEventListener('click', logNumber);
     });
-      
+ const clearBtn = document.querySelector('#clearbtn');
+ clearBtn.addEventListener('click', clearDisplay);     
 
 // for (let i = 0; i < 16; i++){
 //     const keys = document.createElement('button');
