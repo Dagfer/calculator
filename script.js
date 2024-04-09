@@ -36,22 +36,26 @@ const displayField = document.querySelector('#display');
 let displayValue
 
 function logNumber(e){
- displayField.textContent += parseInt(e.target.textContent);
- displayValue = displayField.textContent;
- return displayValue
+  if (displayField.textContent == 0){
+      displayField.textContent = '';
+    }
+  displayField.textContent += parseInt(e.target.textContent);
+  return displayField
 }
 
 function logOperator(e){
+    displayValue = displayField.textContent;
     return operator = ` ${e.target.textContent} `;
 }
 function clearDisplay(){
-    displayField.textContent = '';
+    displayField.textContent = 0;
 }
 const buttons = Array.from(document.querySelectorAll('.numberbtn'));
 const btnNumbers = buttons.map(button => button.textContent);
 buttons.forEach((button) => {
     button.addEventListener('click', logNumber);
     });
+
 const clearBtn = document.querySelector('#clearbtn');
 clearBtn.addEventListener('click', clearDisplay);   
 
