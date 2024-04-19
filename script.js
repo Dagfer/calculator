@@ -15,47 +15,55 @@ function multiplyMe(firstNumber, secondNumber){
 }
 
 
-function operate (firstNumber, operator, secondNumber){
+function operate (){
+    console.log(operator);
+    if (operator != undefined && firstNumber != undefined){
+        secondNumber = parseInt(displayValue);
+        console.log(secondNumber)
+    }
+    
     if (operator === "+"){
-        return addMe(firstNumber, secondNumber)
+         displayValue = addMe(firstNumber, secondNumber)
     }
     else if (operator === "-"){
-        return substractMe(firstNumber, secondNumber)
+          displayValue = substractMe(firstNumber, secondNumber)
     }
     else if (operator === '/'){
-        return divideMe(firstNumber, secondNumber)
+          displayValue = divideMe(firstNumber, secondNumber)
     }
-    else if (operator === '*' || operator === 'x'){
-        return multiplyMe(firstNumber, secondNumber)
+    else if (operator === '*'){
+          displayValue = multiplyMe(firstNumber, secondNumber)
     }
+    return displayField.textContent = displayValue
 }
-let firstNumber
-let secondNumber
-let operator
+let firstNumber;
+let secondNumber;
+let operator;
 
 const displayField = document.querySelector('#display');
-let displayValue
+let displayValue;
 
 function logNumber(e){
     if (displayField.textContent == 0){
         displayField.textContent = '';
       }
-   if(displayField.textContent === firstNumber){
+   if(displayField.textContent == firstNumber){
       displayField.textContent = '';
    }
       displayField.textContent += parseInt(e.target.textContent);
   
-    return displayField
+    return displayValue = displayField.textContent;
   }
 
 function logOperator(e){
-    displayValue = displayField.textContent;
-    operator = ` ${e.target.textContent} `;
+   
+    operator = `${e.target.textContent}`;
    if (operator != undefined){
-    firstNumber = displayValue
-     displayField.textContent = firstNumber
-    displayValue = undefined
+    firstNumber = parseInt(displayValue);
+    //  displayField.textContent = firstNumber
+    // displayValue = undefined
   }
+  return operator
 }
 
 function clearDisplay(){
@@ -74,6 +82,7 @@ const clearBtn = document.querySelector('#clearbtn');
 clearBtn.addEventListener('click', clearDisplay);   
 
 const operateBtn = document.querySelector('#operatebtn')
+operateBtn.addEventListener('click', operate);   
 
 const addBtn = document.querySelector('#add');
 addBtn.addEventListener('click', logOperator)
