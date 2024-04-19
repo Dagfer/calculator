@@ -14,9 +14,6 @@ function multiplyMe(firstNumber, secondNumber){
     return firstNumber * secondNumber
 }
 
-let firstNumber
-let secondNumber
-let operator = '' 
 
 function operate (firstNumber, operator, secondNumber){
     if (operator === "+"){
@@ -32,16 +29,24 @@ function operate (firstNumber, operator, secondNumber){
         return multiplyMe(firstNumber, secondNumber)
     }
 }
+let firstNumber
+let secondNumber
+let operator
+
 const displayField = document.querySelector('#display');
 let displayValue
 
 function logNumber(e){
-  if (displayField.textContent == 0){
+    if (displayField.textContent == 0){
+        displayField.textContent = '';
+      }
+   if(displayField.textContent === firstNumber){
       displayField.textContent = '';
-    }
-  displayField.textContent += parseInt(e.target.textContent);
-  return displayField
-}
+   }
+      displayField.textContent += parseInt(e.target.textContent);
+  
+    return displayField
+  }
 
 function logOperator(e){
     displayValue = displayField.textContent;
