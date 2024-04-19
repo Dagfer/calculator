@@ -57,8 +57,12 @@ function logOperator(e){
     displayValue = undefined
   }
 }
+
 function clearDisplay(){
     displayField.textContent = 0;
+    firstNumber = undefined
+    secondNumber = undefined
+    operator = undefined
 }
 const buttons = Array.from(document.querySelectorAll('.numberbtn'));
 const btnNumbers = buttons.map(button => button.textContent);
