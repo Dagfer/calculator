@@ -50,7 +50,12 @@ function logNumber(e){
 
 function logOperator(e){
     displayValue = displayField.textContent;
-    return operator = ` ${e.target.textContent} `;
+    operator = ` ${e.target.textContent} `;
+   if (operator != undefined){
+    firstNumber = displayValue
+     displayField.textContent = firstNumber
+    displayValue = undefined
+  }
 }
 function clearDisplay(){
     displayField.textContent = 0;
