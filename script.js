@@ -34,7 +34,10 @@ function operate (){
     else if (operator === '*'){
           displayValue = multiplyMe(firstNumber, secondNumber)
     }
-   
+   if (operated === false){
+    operated = true;
+   }
+    
     Number.isNaN(displayValue) ? displayField.textContent = "Division by zero is ILLEGAL" : displayField.textContent = displayValue
 }
 let firstNumber;
@@ -43,6 +46,7 @@ let operator;
 
 const displayField = document.querySelector('#display');
 let displayValue;
+let operated = false;
 
 function logNumber(e){
     if (displayField.textContent == 0){
@@ -57,21 +61,30 @@ function logNumber(e){
   }
 
 function logOperator(e){
-   
+   if (operator === undefined){
     operator = `${e.target.textContent}`;
-   if (operator != undefined){
+   }
+   if (operator != undefined && firstNumber === undefined){
     firstNumber = parseInt(displayValue);
     //  displayField.textContent = firstNumber
     // displayValue = undefined
+  }
+  else if (secondNumber === undefined && firstNumber != undefined && operator != undefined){
+    secondNumber = parseInt(displayValue);
+    operate()
+    displayField.textContent = displayValue
+    firstNumber = displayValue;
+    operator = `${e.target.textContent}`
   }
   return operator
 }
 
 function clearDisplay(){
     displayField.textContent = 0;
-    firstNumber = undefined
-    secondNumber = undefined
-    operator = undefined
+    firstNumber = undefined;
+    secondNumber = undefined;
+    operator = undefined;
+    displayValue = undefined;
 }
 const buttons = Array.from(document.querySelectorAll('.numberbtn'));
 const btnNumbers = buttons.map(button => button.textContent);
