@@ -47,6 +47,7 @@ let operator;
 const displayField = document.querySelector('#display');
 let displayValue;
 let operated = false;
+let reoperated = false;
 
 function logNumber(e){
     if (displayField.textContent == 0){
@@ -55,9 +56,18 @@ function logNumber(e){
    if(displayField.textContent == firstNumber){
       displayField.textContent = '';
    }
+
+   
+   
       displayField.textContent += parseInt(e.target.textContent);
+      displayValue = displayField.textContent
+
+    if (reoperated === true && operated === true){
+        secondNumber = ''; 
+        secondNumber = parseInt(displayValue)
+    }
   
-    return displayValue = displayField.textContent;
+    return displayValue;
   }
 
 function logOperator(e){
@@ -69,13 +79,17 @@ function logOperator(e){
     //  displayField.textContent = firstNumber
     // displayValue = undefined
   }
+
+  // the following should probs be a separate function that then gets called here
   else if (secondNumber === undefined && firstNumber != undefined && operator != undefined){
     secondNumber = parseInt(displayValue);
     operate()
+    reoperated = true;
     displayField.textContent = displayValue
     firstNumber = displayValue;
     operator = `${e.target.textContent}`
   }
+  
   return operator
 }
 
@@ -84,7 +98,9 @@ function clearDisplay(){
     firstNumber = undefined;
     secondNumber = undefined;
     operator = undefined;
-    displayValue = undefined;
+    operated = false;
+    reoperated = false;
+    // displayValue = undefined;
 }
 const buttons = Array.from(document.querySelectorAll('.numberbtn'));
 const btnNumbers = buttons.map(button => button.textContent);
