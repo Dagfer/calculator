@@ -34,7 +34,8 @@ function operate (){
     else if (operator === '*'){
           displayValue = multiplyMe(firstNumber, secondNumber)
     }
-    return displayField.textContent = displayValue
+   
+    Number.isNaN(displayValue) ? displayField.textContent = "Division by zero is ILLEGAL" : displayField.textContent = displayValue
 }
 let firstNumber;
 let secondNumber;
