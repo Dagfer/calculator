@@ -122,6 +122,7 @@ function clearDisplay(){
     operator = undefined;
     operated = false;
     reoperated = false;
+    displayValue = undefined;
     // displayValue = undefined;
 }
 const buttons = Array.from(document.querySelectorAll('.numberbtn'));
