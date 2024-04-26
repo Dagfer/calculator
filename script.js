@@ -24,20 +24,30 @@ function operate (){
     
     if (operator === "+"){
          displayValue = addMe(firstNumber, secondNumber)
+         operator = undefined;
+
     }
     else if (operator === "-"){
           displayValue = substractMe(firstNumber, secondNumber)
+          operator = undefined;
+
     }
     else if (operator === '/'){
           displayValue = divideMe(firstNumber, secondNumber)
+          operator = undefined;
+
     }
     else if (operator === '*'){
           displayValue = multiplyMe(firstNumber, secondNumber)
+          operator = undefined;
     }
    if (operated === false){
     operated = true;
    }
-    
+    if (reoperated === true){
+        reoperated = false;
+    }
+  
     Number.isNaN(displayValue) ? displayField.textContent = "Division by zero is ILLEGAL" : displayField.textContent = displayValue
 }
 let firstNumber;
@@ -83,13 +93,25 @@ function logOperator(e){
   // the following should probs be a separate function that then gets called here
   else if (secondNumber === undefined && firstNumber != undefined && operator != undefined){
     secondNumber = parseInt(displayValue);
-    operate()
-    reoperated = true;
-    displayField.textContent = displayValue
+    operate();
+    displayField.textContent = displayValue;
     firstNumber = displayValue;
-    operator = `${e.target.textContent}`
+    operator = `${e.target.textContent}`;
   }
-  
+  else if (reoperated === false && secondNumber != undefined && firstNumber != undefined && operator != undefined){
+    operate();
+    reoperated = true;
+    displayField.textContent = displayValue;
+    firstNumber = displayValue;
+    operator = `${e.target.textContent}`;
+  }
+   else if (reoperated === true && secondNumber != undefined && firstNumber != undefined && operator != undefined){
+    operate();
+    operator = `${e.target.textContent}`;
+    displayField.textContent = displayValue;
+    firstNumber = displayValue;
+
+   }
   return operator
 }
 
