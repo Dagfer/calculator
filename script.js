@@ -18,9 +18,9 @@ function multiplyMe(firstNumber, secondNumber){
 function operate (){
     console.log(operator);
     if (operator != undefined && firstNumber != undefined){
-        secondNumber = parseInt(displayValue);
+         secondNumber = parseFloat(displayValue);
         console.log(secondNumber)
-    }
+     }
     
     if (operator === "+"){
          displayValue = addMe(firstNumber, secondNumber)
@@ -58,41 +58,54 @@ const displayField = document.querySelector('#display');
 let displayValue;
 let operated = false;
 let reoperated = false;
-
+let logArray = [];
 function logNumber(e){
-    if (displayField.textContent == 0){
+  
+  if (displayField.textContent == 0 && firstNumber === undefined){
         displayField.textContent = '';
+        
       }
-   if(displayField.textContent == firstNumber){
-      displayField.textContent = '';
+  else if(displayField.textContent == firstNumber){
+    if (firstNumber != e.target.textContent){
+      displayField.textContent = ''
+          } 
+ else {displayField.textContent = '';
+     logArray[0] = firstNumber
+     firstNumber = undefined;
+    }
+    displayField.textContent = parseFloat(logArray[0]);
    }
 
-   
-   
-      displayField.textContent += parseInt(e.target.textContent);
-      displayValue = displayField.textContent
-
+   displayField.textContent += parseFloat(e.target.textContent);
+   displayValue = displayField.textContent
+   if (firstNumber === undefined){
+    firstNumber = logArray[0];
+   }
+ 
     if (reoperated === true && operated === true){
         secondNumber = ''; 
-        secondNumber = parseInt(displayValue)
+        secondNumber = parseFloat(displayValue)
     }
-  
+    
     return displayValue;
   }
 
 function logOperator(e){
    if (operator === undefined){
     operator = `${e.target.textContent}`;
+    
    }
    if (operator != undefined && firstNumber === undefined){
-    firstNumber = parseInt(displayValue);
+    firstNumber = parseFloat(displayValue);
     //  displayField.textContent = firstNumber
     // displayValue = undefined
   }
-
+ else if (operator != undefined && firstNumber != undefined && secondNumber === undefined){
+    secondNumber = parseFloat(displayValue)
+  }
   // the following should probs be a separate function that then gets called here
   else if (secondNumber === undefined && firstNumber != undefined && operator != undefined){
-    secondNumber = parseInt(displayValue);
+    secondNumber = parseFloat(displayValue);
     operate();
     displayField.textContent = displayValue;
     firstNumber = displayValue;
