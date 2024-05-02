@@ -66,19 +66,29 @@ function logNumber(e){
         
       }
   else if(displayField.textContent == firstNumber){
-    if (firstNumber != e.target.textContent){
-      displayField.textContent = ''
-          } 
- else {displayField.textContent = '';
-     logArray[0] = firstNumber
-     firstNumber = undefined;
-    }
-    displayField.textContent = parseFloat(logArray[0]);
-   }
+       if (firstNumber != e.target.textContent){
+           displayField.textContent = '';
+             } 
 
+       else {displayField.textContent = '';
+            logArray[0] = firstNumber;
+            firstNumber = undefined;
+             }
+    displayField.textContent = parseFloat(logArray[0])
+    if (isNaN(displayField.textContent)){
+      displayField.textContent = ''
+    }   
+      }
+   
+   if (logArray[0] == e.target.textContent){
+    let stringEdit = displayField.textContent.substring(1);
+    displayField.textContent = stringEdit
+   }
    displayField.textContent += parseFloat(e.target.textContent);
+   
    displayValue = displayField.textContent
-   if (firstNumber === undefined){
+   
+   if (firstNumber === undefined && logArray.length === 1 ){
     firstNumber = logArray[0];
    }
  
@@ -101,7 +111,8 @@ function logOperator(e){
     // displayValue = undefined
   }
  else if (operator != undefined && firstNumber != undefined && secondNumber === undefined){
-    secondNumber = parseFloat(displayValue)
+    
+  secondNumber = parseFloat(displayValue)
   }
   // the following should probs be a separate function that then gets called here
   else if (secondNumber === undefined && firstNumber != undefined && operator != undefined){
