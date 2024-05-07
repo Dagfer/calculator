@@ -177,6 +177,7 @@ function clearDisplay(){
     operated = false;
     reoperated = false;
     displayValue = undefined;
+    logArray.length = 0;
     // displayValue = undefined;
 }
 const buttons = Array.from(document.querySelectorAll('.numberbtn'));
