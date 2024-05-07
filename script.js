@@ -16,6 +16,10 @@ function multiplyMe(firstNumber, secondNumber){
 
 
 function operate (){
+  if (firstNumber === undefined  || secondNumber === undefined){
+    console.log(displayField.textContent);
+    return displayField.textContent;
+  }
     console.log(operator);
     if (operator != undefined && firstNumber != undefined && secondNumber === undefined){
          secondNumber = parseFloat(displayValue);
@@ -169,6 +173,10 @@ function operatorSwitch(newOperator){
     return operator = newOperator
   }
 
+  function deleteButton(){
+    displayField.textContent = displayField.textContent.slice(0, -1);
+  }
+
 function clearDisplay(){
     displayField.textContent = 0;
     firstNumber = undefined;
@@ -204,6 +212,8 @@ timesBtn.addEventListener('click', logOperator)
 const divideBtn = document.querySelector('#divide');
 divideBtn.addEventListener('click', logOperator)
 
+const deleteBtn = document.querySelector('#deletebtn')
+deleteBtn.addEventListener('click', deleteButton)
 
 // for (let i = 0; i < 16; i++){
 //     const keys = document.createElement('button');
