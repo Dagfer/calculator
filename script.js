@@ -17,7 +17,7 @@ function multiplyMe(firstNumber, secondNumber){
 
 function operate (){
     console.log(operator);
-    if (operator != undefined && firstNumber != undefined){
+    if (operator != undefined && firstNumber != undefined && secondNumber === undefined){
          secondNumber = parseFloat(displayValue);
         console.log(secondNumber)
      }
@@ -41,6 +41,9 @@ function operate (){
           displayValue = multiplyMe(firstNumber, secondNumber)
           operator = undefined;
     }
+    firstNumber = undefined;
+    secondNumber = undefined;
+
    if (operated === false){
     operated = true;
    }
@@ -59,6 +62,7 @@ let displayValue;
 let operated = false;
 let reoperated = false;
 let logArray = [];
+
 function logNumber(e){
   
   if (displayField.textContent == 0 && firstNumber === undefined){
@@ -87,19 +91,30 @@ function logNumber(e){
    displayField.textContent += parseFloat(e.target.textContent);
    
    displayValue = displayField.textContent
-   
+
    if (firstNumber === undefined && logArray.length === 1 ){
     firstNumber = logArray[0];
+    
    }
- 
-    if (reoperated === true && operated === true){
-        secondNumber = ''; 
-        secondNumber = parseFloat(displayValue)
-    }
+assignSecondNum()
+
+    // if (reoperated === true && operated === true){
+    //     secondNumber = ''; 
+    //     secondNumber = parseFloat(displayValue)
+    // }
     
     return displayValue;
   }
+function assignSecondNum(){
+  if (secondNumber === undefined && firstNumber != undefined && operator != undefined){
+    secondNumber = parseFloat(displayValue)
+  }
+  else if (secondNumber != undefined && firstNumber != undefined && operator != undefined){
+    secondNumber = displayValue;
+    secondNumber = parseFloat(secondNumber);
 
+  }
+}
 function logOperator(e){
    if (operator === undefined){
     operator = `${e.target.textContent}`;
@@ -108,29 +123,40 @@ function logOperator(e){
    if (operator != undefined && firstNumber === undefined){
     firstNumber = parseFloat(displayValue);
     //  displayField.textContent = firstNumber
-    // displayValue = undefined
+    displayValue = undefined
   }
- else if (operator != undefined && firstNumber != undefined && secondNumber === undefined){
+ else if (operator != undefined && operator != e.target.textContent){
+    if (firstNumber != undefined && secondNumber != undefined){
+      operate()
+     displayField.textContent = displayValue;
+     firstNumber = displayValue;
+     displayValue = undefined;
+     logArray.length = 0;
+     operator = `${e.target.textContent}`;
+    }
+    else {let newOperator = `${e.target.textContent}`
+    operatorSwitch(newOperator);
+  }
+  }
+ else if (operated === false && operator != undefined && firstNumber != undefined && secondNumber != undefined){
+    operate();
+    displayField.textContent = displayValue;
+    firstNumber = displayValue;
     
-  secondNumber = parseFloat(displayValue)
+    operator = `${e.target.textContent}`;
   }
-  // the following should probs be a separate function that then gets called here
-  else if (secondNumber === undefined && firstNumber != undefined && operator != undefined){
-    secondNumber = parseFloat(displayValue);
-    operate();
+
+  else if (operated === false && secondNumber != undefined && firstNumber != undefined && operator != undefined){
+   
+   operate();
     displayField.textContent = displayValue;
     firstNumber = displayValue;
     operator = `${e.target.textContent}`;
+   
   }
-  else if (reoperated === false && secondNumber != undefined && firstNumber != undefined && operator != undefined){
+   else if (operated === true && secondNumber != undefined && firstNumber != undefined && operator != undefined){
     operate();
-    reoperated = true;
-    displayField.textContent = displayValue;
-    firstNumber = displayValue;
-    operator = `${e.target.textContent}`;
-  }
-   else if (reoperated === true && secondNumber != undefined && firstNumber != undefined && operator != undefined){
-    operate();
+    reoperated = true
     operator = `${e.target.textContent}`;
     displayField.textContent = displayValue;
     firstNumber = displayValue;
@@ -138,6 +164,10 @@ function logOperator(e){
    }
   return operator
 }
+
+function operatorSwitch(newOperator){
+    return operator = newOperator
+  }
 
 function clearDisplay(){
     displayField.textContent = 0;
