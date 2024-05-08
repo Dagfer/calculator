@@ -174,7 +174,12 @@ function operatorSwitch(newOperator){
   }
 
   function deleteButton(){
-    displayField.textContent = displayField.textContent.slice(0, -1);
+    if(displayField.textContent == 0){
+      return 
+    }
+    else {
+      displayField.textContent = displayField.textContent.slice(0, -1);
+    }
   }
 
 function clearDisplay(){
